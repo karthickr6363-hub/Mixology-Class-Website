@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" x-data="themeRoot()" :class="{ 'dark': darkMode }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Mixology Masterclass</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="components.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#C5A059', dark: '#A68546' },
+                        background: { light: '#FFFFFF', dark: '#0A0A0A' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
+
+    <div id="nav-container"></div>
+
+    <main class="pt-24">
+        <!-- Story -->
+        <section class="py-24 max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">EST. 2018</span>
+                    <h1 class="text-4xl md:text-6xl font-serif font-bold mb-8 leading-tight">Shaking Up the
+                        <br>Experience <span class="italic text-primary">Bar by Bar.</span></h1>
+                    <p class="text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">What started as a small workshop
+                        in a Brooklyn loft has grown into New York's premier cocktail education center. Our mission is
+                        simple: to democratize the art of the cocktail.</p>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed">We believe everyone should know how to
+                        make at least three perfect drinks. Whether you're hosting a dinner party or just want a better
+                        nightcap, we're here to guide you.</p>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl skew-y-3">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team (Rule 44: Compact Cards) -->
+        <section class="py-24 bg-slate-50 dark:bg-black/20">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2
+                    class="text-3xl md:text-5xl font-serif font-bold mb-16 italic underline decoration-primary underline-offset-8">
+                    Meet the Mixologists</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Compact Member Card 1 -->
+                    <div
+                        class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 group hover:-translate-y-2 transition-all">
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden mb-4">
+                            <img src="https://i.pravatar.cc/150?u=josh"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
+                        </div>
+                        <h4 class="font-bold">Josh Miller</h4>
+                        <p class="text-[10px] text-primary font-bold uppercase tracking-widest">Head Educator</p>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 group hover:-translate-y-2 transition-all">
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden mb-4">
+                            <img src="https://i.pravatar.cc/150?u=sara"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
+                        </div>
+                        <h4 class="font-bold">Sara Chen</h4>
+                        <p class="text-[10px] text-primary font-bold uppercase tracking-widest">Molecular Expert</p>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 group hover:-translate-y-2 transition-all">
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden mb-4">
+                            <img src="https://i.pravatar.cc/150?u=marcus"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
+                        </div>
+                        <h4 class="font-bold">Marcus Reed</h4>
+                        <p class="text-[10px] text-primary font-bold uppercase tracking-widest">Spirits Specialist</p>
+                    </div>
+
+                    <div
+                        class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 group hover:-translate-y-2 transition-all">
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden mb-4">
+                            <img src="https://i.pravatar.cc/150?u=lisa"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
+                        </div>
+                        <h4 class="font-bold">Lisa Thorne</h4>
+                        <p class="text-[10px] text-primary font-bold uppercase tracking-widest">Classicist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="py-24 max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-serif font-bold mb-12">Certified & Recognized</h2>
+            <div class="flex flex-wrap justify-center gap-12 opacity-50 dark:invert">
+                <img src="https://www.svgrepo.com/show/443588/award.svg" class="h-16 w-16">
+                <img src="https://www.svgrepo.com/show/443589/award-badge.svg" class="h-16 w-16">
+                <img src="https://www.svgrepo.com/show/443590/award-star.svg" class="h-16 w-16">
+                <img src="https://www.svgrepo.com/show/443591/award-trophy.svg" class="h-16 w-16">
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        function themeRoot() {
+            return {
+                darkMode: localStorage.getItem('darkMode') === 'true',
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    localStorage.setItem('darkMode', this.darkMode);
+                    lucide.createIcons();
+                },
+                init() { lucide.createIcons(); }
+            }
+        }
+    </script>
+</body>
+
+</html>

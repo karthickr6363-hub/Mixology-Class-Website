@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" x-data="themeRoot()" :class="{ 'dark': darkMode }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Mixology Masterclass</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#C5A059', dark: '#A68546' },
+                        background: { light: '#F9FAFB', dark: '#0A0A0A' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        body {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex items-center justify-center p-4 py-12">
+
+    <div
+        class="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl shadow-2xl p-8 md:p-12 border border-slate-100 dark:border-slate-800">
+        <div class="text-center mb-10">
+            <a href="index.html" class="inline-flex flex-col items-center gap-2 group">
+                <img src="favicon.svg" alt="Mixology Logo" class="w-16 h-16 group-hover:scale-110 transition-transform">
+                <span
+                    class="text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-white">MIXOLOGY</span>
+            </a>
+            <h2 class="text-xl font-bold mt-6 text-slate-500">Create Account</h2>
+        </div>
+
+        <form class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-widest">First
+                        Name</label>
+                    <input type="text" placeholder="John"
+                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-1 focus:ring-primary outline-none text-sm transition-all">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-widest">Last
+                        Name</label>
+                    <input type="text" placeholder="Doe"
+                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-1 focus:ring-primary outline-none text-sm transition-all">
+                </div>
+            </div>
+            <div>
+                <label class="block text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-widest">Email
+                    Address</label>
+                <input type="email" placeholder="bar@example.com"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-1 focus:ring-primary outline-none text-sm transition-all">
+            </div>
+            <div>
+                <label
+                    class="block text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-widest">Password</label>
+                <input type="password" placeholder="••••••••"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-1 focus:ring-primary outline-none text-sm transition-all">
+            </div>
+
+            <div class="flex items-start gap-3 py-2">
+                <input type="checkbox" class="mt-1 accent-primary">
+                <span class="text-[10px] text-slate-500">I agree to the <a href="legal.html"
+                        class="text-primary hover:underline">Terms & Conditions</a> and confirm I am 21+ years of
+                    age.</span>
+            </div>
+
+            <button type="submit"
+                class="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-dark transition-all shadow-xl shadow-primary/20">
+                JOIN THE CLUB
+            </button>
+        </form>
+
+        <div class="mt-8">
+            <div class="relative mb-6">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-slate-100 dark:border-slate-800"></div>
+                </div>
+                <div class="relative flex justify-center text-[10px]"><span
+                        class="px-4 bg-white dark:bg-slate-900 text-slate-400">OR SIGN UP WITH</span></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <button
+                    class="flex items-center justify-center gap-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5">
+                    <span class="text-xs font-bold">Google</span>
+                </button>
+                <button
+                    class="flex items-center justify-center gap-3 py-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                    <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" class="w-5 h-5">
+                    <span class="text-xs font-bold">Facebook</span>
+                </button>
+            </div>
+        </div>
+
+        <p class="text-center mt-8 text-slate-500 text-sm">
+            Already a member? <a href="login.html" class="text-primary font-bold hover:underline">Sign In</a>
+        </p>
+    </div>
+
+    <!-- Toggle Theme (Discrete) -->
+    <button @click="toggleDarkMode()"
+        class="fixed bottom-8 right-8 p-3 rounded-full bg-slate-100 dark:bg-slate-800 shadow-lg">
+        <i data-lucide="moon" x-show="!darkMode" class="w-5 h-5"></i>
+        <i data-lucide="sun" x-show="darkMode" class="w-5 h-5"></i>
+    </button>
+
+    <script>
+        function themeRoot() {
+            return {
+                darkMode: localStorage.getItem('darkMode') === 'true',
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    localStorage.setItem('darkMode', this.darkMode);
+                    lucide.createIcons();
+                },
+                init() { lucide.createIcons(); }
+            }
+        }
+    </script>
+</body>
+
+</html>

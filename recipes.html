@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" x-data="themeRoot()" :class="{ 'dark': darkMode }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes | Mixology Masterclass</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="components.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#C5A059', dark: '#A68546' },
+                        secondary: { light: '#F5F5F7', dark: '#1A1A1A' },
+                        background: { light: '#FFFFFF', dark: '#0A0A0A' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .light .glass-card {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
+
+    <div id="nav-container"></div>
+
+    <main class="pt-24 px-4 overflow-x-hidden">
+        <!-- Hero Search -->
+        <section class="max-w-7xl mx-auto py-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-8 italic">The Master's <span
+                    class="text-primary">Library</span></h1>
+            <div class="max-w-2xl mx-auto relative group">
+                <i data-lucide="search"
+                    class="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors"></i>
+                <input type="text" placeholder="Search for ingredients, names, or spirit type..."
+                    class="w-full pl-16 pr-8 py-5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-primary shadow-xl outline-none text-lg transition-all">
+            </div>
+        </section>
+
+        <!-- Recipes Grid (Rule 24, 25) -->
+        <section class="max-w-7xl mx-auto pb-24">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Recipe Card 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        <span
+                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-white text-[10px] font-bold px-2 py-1 rounded">SIGNATURE</span>
+                    </div>
+                    <div class="p-6 text-center"> <!-- Rule 24: Centered content -->
+                        <h4 class="text-xl font-bold mb-2">Smoked Old Fashioned</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
+                            Bourbon • Maple • Cedar</p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center gap-2 text-primary font-bold hover:gap-3 transition-all underline decoration-2 underline-offset-4">
+                            VIEW RECIPE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1536935338218-d413d88e7a43?auto=format&fit=crop&w=600&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        <span
+                            class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded">SEASONAL</span>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold mb-2">Lavender Gin Sour</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
+                            Gin • Lavender • Lemon</p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center gap-2 text-primary font-bold hover:gap-3 transition-all underline decoration-2 underline-offset-4">
+                            VIEW RECIPE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1541344999736-83eca272f6fc?auto=format&fit=crop&w=600&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        <span
+                            class="absolute top-4 right-4 bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded">MOCKTAIL</span>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold mb-2">Spiced Apple Fizz</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
+                            Apple • Cinnamon • Soda</p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center gap-2 text-primary font-bold hover:gap-3 transition-all underline decoration-2 underline-offset-4">
+                            VIEW RECIPE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=600&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        <span
+                            class="absolute top-4 right-4 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">VIDEO
+                            TOOL</span>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold mb-2">Classic Negroni</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
+                            Gin • Campari • Vermouth</p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center gap-2 text-primary font-bold hover:gap-3 transition-all underline decoration-2 underline-offset-4">
+                            VIEW RECIPE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe Grid Balancing row 2 (Rule 25) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+                <!-- Repeating or adding more for balance -->
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold mb-2">Tequila Sunrise 2.0</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
+                            Blanco • Passionfruit • Lime</p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center gap-2 text-primary font-bold hover:gap-3 transition-all underline decoration-2 underline-offset-4">
+                            VIEW RECIPE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1560512823-829485b8bf24?auto=format&fit=crop&w=600&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold mb-2">Spicy Paloma</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
+                            Tequila • Grapefruit • Chili</p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center gap-2 text-primary font-bold hover:gap-3 transition-all underline decoration-2 underline-offset-4">
+                            VIEW RECIPE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&w=600&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold mb-2">Moscow Mule</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
+                            Vodka • Ginger • Lime</p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center gap-2 text-primary font-bold hover:gap-3 transition-all underline decoration-2 underline-offset-4">
+                            VIEW RECIPE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="text-xl font-bold mb-2">Margarita Noir</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 uppercase tracking-widest font-bold">
+                            Mezcal • Blackberry • Agave</p>
+                        <a href="#"
+                            class="inline-flex items-center justify-center gap-2 text-primary font-bold hover:gap-3 transition-all underline decoration-2 underline-offset-4">
+                            VIEW RECIPE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        function themeRoot() {
+            return {
+                darkMode: localStorage.getItem('darkMode') === 'true',
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    localStorage.setItem('darkMode', this.darkMode);
+                    lucide.createIcons();
+                },
+                init() { lucide.createIcons(); }
+            }
+        }
+    </script>
+</body>
+
+</html>

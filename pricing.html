@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" x-data="themeRoot()" :class="{ 'dark': darkMode }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Mixology Masterclass</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="components.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#C5A059', dark: '#A68546' },
+                        secondary: { light: '#F5F5F7', dark: '#1A1A1A' },
+                        background: { light: '#FFFFFF', dark: '#0A0A0A' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .light .glass-card {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
+
+    <div id="nav-container"></div>
+
+    <main class="pt-32 pb-24">
+        <section class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4 italic">Choose Your <span
+                        class="text-primary">Experience</span></h1>
+                <p class="text-slate-500 max-w-xl mx-auto">No hidden fees. Premium ingredients included in every
+                    in-person class.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+                <!-- Single Pass -->
+                <div
+                    class="bg-white dark:bg-slate-900 rounded-[2rem] p-10 border border-slate-100 dark:border-slate-800 flex flex-col hover:shadow-2xl transition-all">
+                    <h3 class="text-xl font-bold mb-2">Single Class</h3>
+                    <p class="text-slate-400 text-sm mb-8">One 2-hour session of your choice.</p>
+                    <div class="mb-8">
+                        <span class="text-5xl font-serif font-bold text-primary">$89</span>
+                        <span class="text-slate-400">/once</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> 3 Custom Cocktails
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> Premium Spirits Included
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> Digital Recipe Card
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-4 bg-secondary-light dark:bg-slate-800 hover:bg-primary hover:text-white rounded-2xl font-bold transition-all mt-auto">SELECT
+                        PASS</button>
+                </div>
+
+                <!-- Monthly Membership -->
+                <div
+                    class="bg-slate-900 text-white rounded-[2rem] p-10 ring-4 ring-primary ring-opacity-50 relative flex flex-col shadow-2xl scale-105 z-10">
+                    <div
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-tighter">
+                        RECOMMENDED</div>
+                    <h3 class="text-xl font-bold mb-2">Club Member</h3>
+                    <p class="text-slate-400 text-sm mb-8">Four classes per month + VIP perks.</p>
+                    <div class="mb-8">
+                        <span class="text-5xl font-serif font-bold text-primary">$249</span>
+                        <span class="text-slate-400">/mo</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> 4 Classes Monthly
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> 15% Off Private Events
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> Early Access to New Recipes
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> Commemorative Shaker Set
+                        </li>
+                    </ul>
+                    <!-- Rule 8: Ensure buttons on same horizontal line via flex-grow and mt-auto -->
+                    <button
+                        class="w-full py-4 bg-primary text-white hover:bg-primary-dark rounded-2xl font-bold transition-all mt-auto">START
+                        MEMBERSHIP</button>
+                </div>
+
+                <!-- Group Package -->
+                <div
+                    class="bg-white dark:bg-slate-900 rounded-[2rem] p-10 border border-slate-100 dark:border-slate-800 flex flex-col hover:shadow-2xl transition-all">
+                    <h3 class="text-xl font-bold mb-2">Group Party</h3>
+                    <p class="text-slate-400 text-sm mb-8">Ideal for 6-10 people.</p>
+                    <div class="mb-8">
+                        <span class="text-5xl font-serif font-bold text-primary">$75</span>
+                        <span class="text-slate-400">/pp</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> Private Studio Time
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> Appetizer Platter
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-300">
+                            <i data-lucide="check" class="w-5 h-5 text-primary"></i> Custom Menu Options
+                        </li>
+                    </ul>
+                    <button
+                        class="w-full py-4 bg-secondary-light dark:bg-slate-800 hover:bg-primary hover:text-white rounded-2xl font-bold transition-all mt-auto">BOOK
+                        GROUP</button>
+                </div>
+            </div>
+
+            <!-- Gift Cards (Rule 25) -->
+            <section id="gift-cards" class="py-24 border-t border-slate-100 dark:border-slate-800">
+                <div class="flex flex-col md:flex-row items-center gap-16">
+                    <div class="flex-1">
+                        <h2 class="text-4xl font-serif font-bold mb-6">Give the Gift of <span
+                                class="italic text-primary">Skill.</span></h2>
+                        <p class="text-slate-500 mb-8 leading-relaxed">Perfect for weddings, birthdays, or just because.
+                            Our digital gift cards never expire and can be used for any class or merchandise.</p>
+                        <div class="flex gap-4">
+                            <button
+                                class="px-8 py-3 bg-slate-900 dark:bg-primary text-white rounded-xl font-bold hover:scale-105 transition-all">$50</button>
+                            <button
+                                class="px-8 py-3 bg-slate-900 dark:bg-primary text-white rounded-xl font-bold hover:scale-105 transition-all">$100</button>
+                            <button
+                                class="px-8 py-3 bg-slate-900 dark:bg-primary text-white rounded-xl font-bold hover:scale-105 transition-all">$200</button>
+                            <button
+                                class="px-8 py-3 border-2 border-slate-900 dark:border-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all">Custom</button>
+                        </div>
+                    </div>
+                    <div class="flex-1 relative">
+                        <div
+                            class="aspect-video bg-gradient-to-br from-primary to-primary-dark rounded-3xl shadow-2xl p-12 text-white flex flex-col justify-between">
+                            <div class="flex justify-between items-start">
+                                <i data-lucide="martini" class="w-12 h-12"></i>
+                                <span class="font-serif italic text-2xl">Mixology Pass</span>
+                            </div>
+                            <div>
+                                <div class="text-sm opacity-50 mb-1">REDEEMABLE AT</div>
+                                <div class="font-bold tracking-widest">MIXOLOGY STUDIO NYC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        function themeRoot() {
+            return {
+                darkMode: localStorage.getItem('darkMode') === 'true',
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    localStorage.setItem('darkMode', this.darkMode);
+                    lucide.createIcons();
+                },
+                init() { lucide.createIcons(); }
+            }
+        }
+    </script>
+</body>
+
+</html>

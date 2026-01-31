@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" x-data="themeRoot()" :class="{ 'dark': darkMode }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal | Mixology Masterclass</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="components.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#C5A059', dark: '#A68546' },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-white dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300">
+
+    <div id="nav-container"></div>
+
+    <main class="pt-32 pb-24 px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header (Rule 40) -->
+            <h1 class="text-4xl font-serif font-bold mb-12 border-b-2 border-primary pb-4 inline-block">Legal
+                Documentation</h1>
+
+            <!-- Age Disclaimer (Rule 41) -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold mb-6">1. Age Requirement</h2>
+                <div class="p-6 bg-red-50 dark:bg-red-900/10 border-l-4 border-red-500 rounded-lg">
+                    <p class="text-red-700 dark:text-red-400 font-bold">You must be 21 years of age or older to purchase
+                        any mixology class or gift card. Valid ID is required for all in-person studio classes.</p>
+                </div>
+            </section>
+
+            <!-- Terms (Rule 40) -->
+            <section class="mb-16 space-y-8">
+                <h2 class="text-2xl font-bold">2. Terms & Conditions</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">2.1 Class Participation</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">By booking a class, you agree to
+                            follow the safety instructions provided by our instructors. We reserve the right to remove
+                            any participant who appears intoxicated or behaves inappropriately.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">2.2 Ingredients & Allergies</h3>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">While we use premium ingredients,
+                            participants are responsible for notifying us of any allergies prior to the class. We cannot
+                            guarantee an allergen-free environment.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cancellation Policy -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold mb-6">3. Cancellation Policy</h2>
+                <div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl">
+                    <h4 class="text-base font-bold mb-4 uppercase tracking-tighter text-primary">Standard Refund Window
+                    </h4>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Cancellations made 72 hours or
+                        more in advance of the class start time will receive a full refund or class credit. Within 72
+                        hours, no refunds are issued, but you may transfer your seat to another person (21+).</p>
+                    <div class="flex items-center gap-4 text-sm font-bold">
+                        <i data-lucide="info" class="w-5 h-5 text-primary"></i>
+                        <span>Contact hello@mixology.com for all cancellation requests.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Privacy -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold mb-6">4. Privacy Policy</h2>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed">Your privacy is important to us. We only
+                    collect information necessary to process your booking and provide you with our services. We never
+                    sell your data to third parties.</p>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        function themeRoot() {
+            return {
+                darkMode: localStorage.getItem('darkMode') === 'true',
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    localStorage.setItem('darkMode', this.darkMode);
+                    lucide.createIcons();
+                },
+                init() { lucide.createIcons(); }
+            }
+        }
+    </script>
+</body>
+
+</html>
