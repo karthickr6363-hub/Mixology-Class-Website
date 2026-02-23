@@ -1,5 +1,20 @@
 // Shared Components Injection
 document.addEventListener('DOMContentLoaded', () => {
+    // Global Overflow Fix (Rule 15, 45)
+    const style = document.createElement('style');
+    style.textContent = `
+        html, body {
+            overflow-x: hidden !important;
+            position: relative;
+            width: 100%;
+        }
+        .active-nav-link {
+            color: #C5A059 !important;
+            font-weight: 700;
+        }
+    `;
+    document.head.appendChild(style);
+
     initNav();
     initFooter();
 });
@@ -19,22 +34,10 @@ function initNav() {
             </a>
 
             <!-- Desktop Menu (Rule 32/29/30) -->
-            <div class="hidden lg:flex items-center gap-4">
+            <div class="hidden xl:flex items-center gap-4">
                 <a href="index.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary transition-colors py-2">Home</a>
                 <a href="home2.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary transition-colors py-2">Home 2</a>
-                <div class="relative group" x-data="{ open: false }">
-                    <button @click="open = !open" @click.away="open = false" class="flex items-center gap-1 text-xs xl:text-sm font-medium hover:text-primary py-2">
-                        Classes <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                    </button>
-                    <!-- Dropdown (Rule 26/27) -->
-                    <div x-show="open" x-cloak 
-                         class="absolute left-0 mt-2 w-48 rounded-xl shadow-2xl bg-white dark:bg-secondary-dark ring-1 ring-black ring-opacity-5 p-2 transition-all">
-                        <a href="classes.html" class="block px-4 py-2 text-sm rounded-lg hover:bg-primary/10 hover:text-primary">All Classes</a>
-                        <a href="classes.html#beginner" class="block px-4 py-2 text-sm rounded-lg hover:bg-primary/10 hover:text-primary">Beginner</a>
-                        <a href="classes.html#advanced" class="block px-4 py-2 text-sm rounded-lg hover:bg-primary/10 hover:text-primary">Advanced</a>
-                        <a href="classes.html#virtual" class="block px-4 py-2 text-sm rounded-lg hover:bg-primary/10 hover:text-primary">Virtual Classes</a>
-                    </div>
-                </div>
+                <a href="classes.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Classes</a>
                 <a href="events.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Events</a>
                 <a href="recipes.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Recipes</a>
                 <a href="pricing.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Pricing</a>
@@ -60,7 +63,7 @@ function initNav() {
             </div>
 
             <!-- Mobile Menu Button (Rule 14) -->
-            <div class="lg:hidden flex items-center gap-4">
+            <div class="xl:hidden flex items-center gap-4">
                  <button @click="toggleDarkMode()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
                     <i data-lucide="moon" x-show="!darkMode" class="w-5 h-5"></i>
                     <i data-lucide="sun" x-show="darkMode" class="w-5 h-5"></i>
@@ -79,7 +82,7 @@ function initNav() {
              x-transition:leave="transition ease-in duration-300 transform"
              x-transition:leave-start="translate-x-0"
              x-transition:leave-end="-translate-x-full"
-             class="fixed inset-0 z-[60] lg:hidden"
+             class="fixed inset-0 z-[60] xl:hidden"
              x-cloak>
             
             <div class="fixed inset-0 bg-black/50" @click="mobileMenuOpen = false"></div>
@@ -96,16 +99,16 @@ function initNav() {
                 </div>
 
                 <div class="space-y-2 overflow-y-auto flex-1">
-                    <a href="index.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home</a>
-                    <a href="home2.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home 2</a>
-                    <a href="classes.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Classes</a>
-                    <a href="events.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Events</a>
-                    <a href="recipes.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Recipes</a>
-                    <a href="pricing.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Pricing</a>
-                    <a href="how-it-works.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">How It Works</a>
-                    <a href="about.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">About</a>
-                    <a href="contact.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Contact</a>
-                    <a href="dashboard.html" class="block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Dashboard</a>
+                    <a href="index.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home</a>
+                    <a href="home2.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home 2</a>
+                    <a href="classes.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Classes</a>
+                    <a href="events.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Events</a>
+                    <a href="recipes.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Recipes</a>
+                    <a href="pricing.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Pricing</a>
+                    <a href="how-it-works.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">How It Works</a>
+                    <a href="about.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">About</a>
+                    <a href="contact.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Contact</a>
+                    <a href="dashboard.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Dashboard</a>
                 </div>
 
                 <div class="mt-auto space-y-4 pt-6">
@@ -120,6 +123,7 @@ function initNav() {
     if (container) {
         container.innerHTML = navHTML;
         highlightActiveLink();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 }
 
@@ -179,9 +183,9 @@ function initFooter() {
                 <div>
                     <h4 class="text-slate-900 dark:text-white font-bold mb-6">Ready to Shake?</h4>
                     <p class="text-sm text-slate-500 mb-4">Subscribe for exclusive recipes and event early-access.</p>
-                    <div class="flex gap-2">
+                    <div class="flex flex-col sm:flex-row gap-2">
                         <input type="email" placeholder="Email" class="flex-1 px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary outline-none transition-all">
-                        <button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-bold transition-colors">Join</button>
+                        <button class="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-bold transition-colors">Join</button>
                     </div>
                 </div>
             </div>
@@ -200,18 +204,32 @@ function initFooter() {
 
     if (container && !isSpecialPage) {
         container.innerHTML = footerHTML;
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 }
 
 function highlightActiveLink() {
     const links = document.querySelectorAll('.nav-link');
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const path = window.location.pathname;
+    let currentPath = path.split('/').pop() || 'index.html';
+
+    // Normalize for GitHub Pages or local preview where path might be empty or "/"
+    if (currentPath === '' || currentPath === '/') currentPath = 'index.html';
 
     links.forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        // Exact match or match before hash/query
+        const normalizedHref = href.split(/[?#]/)[0];
+
+        if (normalizedHref === currentPath) {
             link.classList.add('active-nav-link');
         } else {
             link.classList.remove('active-nav-link');
         }
     });
+
+    // Also highlight the parent button for nested items if needed
+    // (Optional: can be expanded for the Classes dropdown)
 }
