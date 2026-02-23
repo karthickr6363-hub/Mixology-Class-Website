@@ -37,8 +37,26 @@ function initNav() {
             <div class="hidden xl:flex items-center gap-4">
                 <a href="index.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary transition-colors py-2">Home</a>
                 <a href="home2.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary transition-colors py-2">Home 2</a>
-                <a href="classes.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Classes</a>
-                <a href="events.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Events</a>
+                
+                <!-- Classes Dropdown -->
+                <div class="relative group" x-data="{ open: false }" @mouseleave="open = false">
+                    <button @mouseover="open = true" 
+                            class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2 flex items-center gap-1">
+                        Classes
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-200"
+                         x-transition:enter-start="opacity-0 translate-y-2"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         class="absolute left-0 mt-0 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 py-2 z-50">
+                        <a href="classes.html#all" class="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">All Classes</a>
+                        <a href="classes.html#essentials" class="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">Essentials</a>
+                        <a href="classes.html#pro" class="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">Pro Techniques</a>
+                        <a href="classes.html#virtual" class="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">Virtual Classes</a>
+                    </div>
+                </div>
+
                 <a href="recipes.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Recipes</a>
                 <a href="pricing.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Pricing</a>
                 <a href="how-it-works.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">How It Works</a>
@@ -101,8 +119,20 @@ function initNav() {
                 <div class="space-y-2 overflow-y-auto flex-1">
                     <a href="index.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home</a>
                     <a href="home2.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home 2</a>
-                    <a href="classes.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Classes</a>
-                    <a href="events.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Events</a>
+                    
+                    <div x-data="{ classesOpen: false }" class="border-b border-slate-100 dark:border-slate-800">
+                        <button @click="classesOpen = !classesOpen" class="w-full flex items-center justify-between py-2 text-lg font-medium">
+                            <span>Classes</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" :class="classesOpen ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div x-show="classesOpen" class="pl-4 pb-2 space-y-2">
+                            <a href="classes.html#all" class="block text-base text-slate-500 py-1">All Classes</a>
+                            <a href="classes.html#essentials" class="block text-base text-slate-500 py-1">Essentials</a>
+                            <a href="classes.html#pro" class="block text-base text-slate-500 py-1">Pro Techniques</a>
+                            <a href="classes.html#virtual" class="block text-base text-slate-500 py-1">Virtual Classes</a>
+                        </div>
+                    </div>
+
                     <a href="recipes.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Recipes</a>
                     <a href="pricing.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Pricing</a>
                     <a href="how-it-works.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">How It Works</a>
@@ -162,7 +192,6 @@ function initFooter() {
                         <li><a href="index.html" class="text-slate-500 hover:text-primary transition-colors text-sm">Home</a></li>
                         <li><a href="home2.html" class="text-slate-500 hover:text-primary transition-colors text-sm">Home 2 (Marketing)</a></li>
                         <li><a href="classes.html" class="text-slate-500 hover:text-primary transition-colors text-sm">All Classes</a></li>
-                        <li><a href="events.html" class="text-slate-500 hover:text-primary transition-colors text-sm">Events & Parties</a></li>
                         <li><a href="recipes.html" class="text-slate-500 hover:text-primary transition-colors text-sm">Recipe Library</a></li>
                     </ul>
                 </div>
@@ -211,6 +240,7 @@ function initFooter() {
 function highlightActiveLink() {
     const links = document.querySelectorAll('.nav-link');
     const path = window.location.pathname;
+    const hash = window.location.hash;
     let currentPath = path.split('/').pop() || 'index.html';
 
     // Normalize for GitHub Pages or local preview where path might be empty or "/"
@@ -220,16 +250,43 @@ function highlightActiveLink() {
         const href = link.getAttribute('href');
         if (!href) return;
 
-        // Exact match or match before hash/query
-        const normalizedHref = href.split(/[?#]/)[0];
+        // Special handling for the Classes dropdown items
+        if (href.includes('classes.html')) {
+            // Check if it's the main Classes button (which might be in a dropdown)
+            if (link.textContent.trim() === 'Classes') {
+                if (currentPath === 'classes.html') {
+                    link.classList.add('active-nav-link');
+                } else {
+                    link.classList.remove('active-nav-link');
+                }
+                return;
+            }
 
-        if (normalizedHref === currentPath) {
-            link.classList.add('active-nav-link');
+            // Check if it's a specific sub-item with a hash
+            const normalizedHref = href.split(/[?#]/)[0];
+            const hrefHash = href.split('#')[1];
+
+            if (normalizedHref === currentPath) {
+                if (!hrefHash || (hash === '#' + hrefHash) || (hash === '' && hrefHash === 'all')) {
+                    link.classList.add('active-nav-link');
+                } else {
+                    link.classList.remove('active-nav-link');
+                }
+            }
         } else {
-            link.classList.remove('active-nav-link');
+            // Normal link matching
+            const normalizedHref = href.split(/[?#]/)[0];
+            if (normalizedHref === currentPath) {
+                link.classList.add('active-nav-link');
+            } else {
+                link.classList.remove('active-nav-link');
+            }
         }
     });
 
-    // Also highlight the parent button for nested items if needed
-    // (Optional: can be expanded for the Classes dropdown)
+    // Ensure we handle hash changes for sub-link highlighting
+    if (!window.hasHashListener) {
+        window.addEventListener('hashchange', highlightActiveLink);
+        window.hasHashListener = true;
+    }
 }
