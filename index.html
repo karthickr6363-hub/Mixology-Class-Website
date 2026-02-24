@@ -259,12 +259,16 @@
                     class="text-3xl md:text-5xl font-serif font-bold text-center mb-16 italic underline decoration-primary underline-offset-8">
                     What Our Students Say</h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12">
                     <!-- Testimonial 1 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm italic text-lg relative">
-                        <i data-lucide="quote" class="absolute top-4 right-4 text-primary/20 w-12 h-12"></i>
-                        "The best date night experience ever. We learned how to make a proper Old Fashioned and haven't
-                        looked back since!"
+                    <div
+                        class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl shadow-sm italic text-lg relative flex flex-col justify-between min-h-[320px]">
+                        <div>
+                            <i data-lucide="quote" class="absolute top-4 right-4 text-primary/20 w-12 h-12"></i>
+                            "The best date night experience ever. We learned how to make a proper Old Fashioned and
+                            haven't
+                            looked back since!"
+                        </div>
                         <div class="mt-6 flex items-center gap-4 not-italic">
                             <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
                                 <img src="https://i.pravatar.cc/150?u=1" alt="User">
@@ -283,10 +287,13 @@
                     </div>
 
                     <!-- Testimonial 2 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm italic text-lg relative">
-                        <i data-lucide="quote" class="absolute top-4 right-4 text-primary/20 w-12 h-12"></i>
-                        "The virtual session was surprisingly interactive. The kit arrived right on time and the
-                        instructions were crystal clear."
+                    <div
+                        class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl shadow-sm italic text-lg relative flex flex-col justify-between min-h-[320px]">
+                        <div>
+                            <i data-lucide="quote" class="absolute top-4 right-4 text-primary/20 w-12 h-12"></i>
+                            "The virtual session was surprisingly interactive. The kit arrived right on time and the
+                            instructions were crystal clear."
+                        </div>
                         <div class="mt-6 flex items-center gap-4 not-italic">
                             <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
                                 <img src="https://i.pravatar.cc/150?u=2" alt="User">
@@ -305,16 +312,45 @@
                     </div>
 
                     <!-- Testimonial 3 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm italic text-lg relative">
-                        <i data-lucide="quote" class="absolute top-4 right-4 text-primary/20 w-12 h-12"></i>
-                        "Booked a private event for my team and everyone loved it. A perfect blend of education and fun.
-                        Highly recommend!"
+                    <div
+                        class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl shadow-sm italic text-lg relative flex flex-col justify-between min-h-[320px]">
+                        <div>
+                            <i data-lucide="quote" class="absolute top-4 right-4 text-primary/20 w-12 h-12"></i>
+                            "Booked a private event for my team and everyone loved it. A perfect blend of education and
+                            fun.
+                            Highly recommend!"
+                        </div>
                         <div class="mt-6 flex items-center gap-4 not-italic">
                             <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
                                 <img src="https://i.pravatar.cc/150?u=3" alt="User">
                             </div>
                             <div>
                                 <h4 class="font-bold">Emma L.</h4>
+                                <div class="flex text-primary">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div
+                        class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl shadow-sm italic text-lg relative flex flex-col justify-between min-h-[320px]">
+                        <div>
+                            <i data-lucide="quote" class="absolute top-4 right-4 text-primary/20 w-12 h-12"></i>
+                            "As a professional looking to sharpen my skills, this course was exactly what I needed.
+                            Top-tier techniques!"
+                        </div>
+                        <div class="mt-6 flex items-center gap-4 not-italic">
+                            <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                                <img src="https://i.pravatar.cc/150?u=4" alt="User">
+                            </div>
+                            <div>
+                                <h4 class="font-bold">David K.</h4>
                                 <div class="flex text-primary">
                                     <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                     <i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -360,20 +396,6 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <script>
-        function themeRoot() {
-            return {
-                darkMode: localStorage.getItem('darkMode') === 'true',
-                toggleDarkMode() {
-                    this.darkMode = !this.darkMode;
-                    localStorage.setItem('darkMode', this.darkMode);
-                },
-                init() {
-                    lucide.createIcons();
-                }
-            }
-        }
-    </script>
 </body>
 
 </html>

@@ -21,41 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initNav() {
     const navHTML = `
-    <nav x-data="{ mobileMenuOpen: false, scrolled: false }" 
+    <nav x-data="{ 
+            mobileMenuOpen: false, 
+            scrolled: false,
+            isTransparentPage: ['index.html', 'home2.html', ''].includes(window.location.pathname.split('/').pop().toLowerCase())
+         }" 
          @scroll.window="scrolled = (window.pageYOffset > 20)"
          class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
-         :class="scrolled ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-lg h-16 desktop:h-20' : 'bg-transparent h-20 desktop:h-24'">
+         :class="(scrolled || !isTransparentPage) ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-lg h-16 xl:h-20 text-slate-900 dark:text-white' : 'bg-transparent h-20 xl:h-24 text-white'">
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
             <!-- Logo (Rule 16) -->
             <a href="index.html" class="flex items-center gap-2 group">
                 <img src="favicon.svg" alt="Mixology Logo" class="w-10 h-10 transition-transform group-hover:scale-110">
-                <span class="text-xl font-serif font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">MIXOLOGY</span>
+                <span class="text-xl font-serif font-bold transition-colors group-hover:text-primary"
+                      :class="(scrolled || !isTransparentPage) ? 'text-slate-900 dark:text-white' : 'text-white'">MIXOLOGY</span>
             </a>
 
             <!-- Desktop Menu (Rule 32/29/30) -->
             <div class="hidden xl:flex items-center gap-4">
                 <a href="index.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary transition-colors py-2">Home</a>
                 <a href="home2.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary transition-colors py-2">Home 2</a>
-                
-                <!-- Classes Dropdown -->
-                <div class="relative group" x-data="{ open: false }" @mouseleave="open = false">
-                    <button @mouseover="open = true" 
-                            class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2 flex items-center gap-1">
-                        Classes
-                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div x-show="open" 
-                         x-transition:enter="transition ease-out duration-200"
-                         x-transition:enter-start="opacity-0 translate-y-2"
-                         x-transition:enter-end="opacity-100 translate-y-0"
-                         class="absolute left-0 mt-0 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 py-2 z-50">
-                        <a href="classes.html#all" class="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">All Classes</a>
-                        <a href="classes.html#essentials" class="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">Essentials</a>
-                        <a href="classes.html#pro" class="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">Pro Techniques</a>
-                        <a href="classes.html#virtual" class="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors">Virtual Classes</a>
-                    </div>
-                </div>
+                <a href="classes.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary transition-colors py-2">Classes</a>
 
                 <a href="recipes.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Recipes</a>
                 <a href="pricing.html" class="nav-link text-xs xl:text-sm font-medium hover:text-primary py-2">Pricing</a>
@@ -86,7 +73,8 @@ function initNav() {
                     <i data-lucide="moon" x-show="!darkMode" class="w-5 h-5"></i>
                     <i data-lucide="sun" x-show="darkMode" class="w-5 h-5"></i>
                 </button>
-                <button @click="mobileMenuOpen = true" class="p-2 text-slate-900 dark:text-white">
+                <button @click="mobileMenuOpen = true" class="p-2 transition-colors"
+                        :class="(scrolled || !isTransparentPage) ? 'text-slate-900 dark:text-white' : 'text-white'">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -120,18 +108,7 @@ function initNav() {
                     <a href="index.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home</a>
                     <a href="home2.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home 2</a>
                     
-                    <div x-data="{ classesOpen: false }" class="border-b border-slate-100 dark:border-slate-800">
-                        <button @click="classesOpen = !classesOpen" class="w-full flex items-center justify-between py-2 text-lg font-medium">
-                            <span>Classes</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" :class="classesOpen ? 'rotate-180' : ''"></i>
-                        </button>
-                        <div x-show="classesOpen" class="pl-4 pb-2 space-y-2">
-                            <a href="classes.html#all" class="block text-base text-slate-500 py-1">All Classes</a>
-                            <a href="classes.html#essentials" class="block text-base text-slate-500 py-1">Essentials</a>
-                            <a href="classes.html#pro" class="block text-base text-slate-500 py-1">Pro Techniques</a>
-                            <a href="classes.html#virtual" class="block text-base text-slate-500 py-1">Virtual Classes</a>
-                        </div>
-                    </div>
+                    <a href="classes.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Classes</a>
 
                     <a href="recipes.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Recipes</a>
                     <a href="pricing.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Pricing</a>

@@ -81,7 +81,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Class 1 -->
                 <div x-show="filter === 'all' || filter === 'essentials'"
-                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all">
+                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all flex flex-col h-full">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.pexels.com/photos/605408/pexels-photo-605408.jpeg?auto=compress&cs=tinysrgb&w=800"
                             class="w-full h-full object-cover transition-transform group-hover:scale-110">
@@ -89,25 +89,27 @@
                             class="absolute bottom-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-lg text-white font-bold text-sm">
                             2 HOURS</div>
                     </div>
-                    <div class="p-8">
+                    <div class="p-8 flex flex-col flex-1">
                         <h3 class="text-2xl font-bold mb-2">Beginner Mixology</h3>
                         <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Learn the 5 essential cocktails every
                             home bartender should know. Covers tools, glassware, and basic spirits.</p>
-                        <div class="flex items-center justify-between mb-8">
-                            <span class="text-2xl font-serif font-bold text-primary">$89</span>
-                            <div class="flex items-center text-amber-500"><i data-lucide="star"
-                                    class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">4.9
-                                    (240)</span></div>
+                        <div class="mt-auto">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="text-2xl font-serif font-bold text-primary">$89</span>
+                                <div class="flex items-center text-amber-500"><i data-lucide="star"
+                                        class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">4.9
+                                        (240)</span></div>
+                            </div>
+                            <a href="pricing.html"
+                                class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
+                                SEAT</a>
                         </div>
-                        <a href="pricing.html"
-                            class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
-                            SEAT</a>
                     </div>
                 </div>
 
                 <!-- Class 2 -->
                 <div x-show="filter === 'all' || filter === 'pro'"
-                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all">
+                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all flex flex-col h-full">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.pexels.com/photos/1189257/pexels-photo-1189257.jpeg?auto=compress&cs=tinysrgb&w=800"
                             class="w-full h-full object-cover transition-transform group-hover:scale-110">
@@ -115,51 +117,55 @@
                             class="absolute bottom-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-lg text-white font-bold text-sm">
                             3 HOURS</div>
                     </div>
-                    <div class="p-8">
+                    <div class="p-8 flex flex-col flex-1">
                         <h3 class="text-2xl font-bold mb-2">Advanced Techniques</h3>
                         <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Dive into molecular mixology, custom
                             infusions, and smoke-infusing cocktails. For the serious enthusiast.</p>
-                        <div class="flex items-center justify-between mb-8">
-                            <span class="text-2xl font-serif font-bold text-primary">$129</span>
-                            <div class="flex items-center text-amber-500"><i data-lucide="star"
-                                    class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">5.0
-                                    (88)</span></div>
+                        <div class="mt-auto">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="text-2xl font-serif font-bold text-primary">$129</span>
+                                <div class="flex items-center text-amber-500"><i data-lucide="star"
+                                        class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">5.0
+                                        (88)</span></div>
+                            </div>
+                            <a href="pricing.html"
+                                class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
+                                SEAT</a>
                         </div>
-                        <a href="pricing.html"
-                            class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
-                            SEAT</a>
                     </div>
                 </div>
 
                 <!-- Class 3 -->
                 <div x-show="filter === 'all' || filter === 'essentials'"
-                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all">
+                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all flex flex-col h-full">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.pexels.com/photos/1283272/pexels-photo-1283272.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80"
                             class="w-full h-full object-cover transition-transform group-hover:scale-110">
                         <div
                             class="absolute bottom-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-lg text-white font-bold text-sm">
                             1.5 HOURS</div>
                     </div>
-                    <div class="p-8">
+                    <div class="p-8 flex flex-col flex-1">
                         <h3 class="text-2xl font-bold mb-2">Wine & Spirits Tasting</h3>
                         <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">A sensory journey through aged
                             whiskies, vintage wines, and rare agave spirits. Learn to palate like a pro.</p>
-                        <div class="flex items-center justify-between mb-8">
-                            <span class="text-2xl font-serif font-bold text-primary">$75</span>
-                            <div class="flex items-center text-amber-500"><i data-lucide="star"
-                                    class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">4.8
-                                    (112)</span></div>
+                        <div class="mt-auto">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="text-2xl font-serif font-bold text-primary">$75</span>
+                                <div class="flex items-center text-amber-500"><i data-lucide="star"
+                                        class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">4.8
+                                        (112)</span></div>
+                            </div>
+                            <a href="pricing.html"
+                                class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
+                                SEAT</a>
                         </div>
-                        <a href="pricing.html"
-                            class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
-                            SEAT</a>
                     </div>
                 </div>
 
                 <!-- Class 4 -->
                 <div x-show="filter === 'all' || filter === 'virtual'"
-                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all">
+                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all flex flex-col h-full">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=800"
                             class="w-full h-full object-cover transition-transform group-hover:scale-110">
@@ -167,25 +173,27 @@
                             class="absolute bottom-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-lg text-white font-bold text-sm">
                             60 MIN</div>
                     </div>
-                    <div class="p-8">
+                    <div class="p-8 flex flex-col flex-1">
                         <h3 class="text-2xl font-bold mb-2">Virtual Happy Hour</h3>
                         <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Zoom-based interactive class. Kit
                             delivered to your door including syrups and biters.</p>
-                        <div class="flex items-center justify-between mb-8">
-                            <span class="text-2xl font-serif font-bold text-primary">$45</span>
-                            <div class="flex items-center text-amber-500"><i data-lucide="star"
-                                    class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">4.7
-                                    (310)</span></div>
+                        <div class="mt-auto">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="text-2xl font-serif font-bold text-primary">$45</span>
+                                <div class="flex items-center text-amber-500"><i data-lucide="star"
+                                        class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">4.7
+                                        (310)</span></div>
+                            </div>
+                            <a href="pricing.html"
+                                class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
+                                SEAT</a>
                         </div>
-                        <a href="pricing.html"
-                            class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
-                            SEAT</a>
                     </div>
                 </div>
 
                 <!-- Class 5 -->
                 <div x-show="filter === 'all' || filter === 'essentials'"
-                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all">
+                    class="glass-card rounded-3xl overflow-hidden group hover:shadow-2xl transition-all flex flex-col h-full">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://images.pexels.com/photos/2444852/pexels-photo-2444852.jpeg?auto=compress&cs=tinysrgb&w=800"
                             class="w-full h-full object-cover transition-transform group-hover:scale-110">
@@ -193,19 +201,21 @@
                             class="absolute bottom-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-lg text-white font-bold text-sm">
                             90 MIN</div>
                     </div>
-                    <div class="p-8">
+                    <div class="p-8 flex flex-col flex-1">
                         <h3 class="text-2xl font-bold mb-2">Kids / Mocktail Class</h3>
                         <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Fun, non-alcoholic creations for the
                             younger crowd or sober-curious enthusiasts. High flavor, zero ABV.</p>
-                        <div class="flex items-center justify-between mb-8">
-                            <span class="text-2xl font-serif font-bold text-primary">$55</span>
-                            <div class="flex items-center text-amber-500"><i data-lucide="star"
-                                    class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">4.9
-                                    (56)</span></div>
+                        <div class="mt-auto">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="text-2xl font-serif font-bold text-primary">$55</span>
+                                <div class="flex items-center text-amber-500"><i data-lucide="star"
+                                        class="w-4 h-4 fill-current"></i><span class="ml-1 text-sm font-bold">4.9
+                                        (56)</span></div>
+                            </div>
+                            <a href="pricing.html"
+                                class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
+                                SEAT</a>
                         </div>
-                        <a href="pricing.html"
-                            class="w-full h-[52px] bg-primary hover:bg-primary-dark text-white rounded-xl font-bold flex items-center justify-center transition-all">BOOK
-                            SEAT</a>
                     </div>
                 </div>
             </div>
