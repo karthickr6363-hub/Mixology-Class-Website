@@ -93,7 +93,7 @@ function initNav() {
             
             <div class="fixed inset-0 bg-black/50" @click="mobileMenuOpen = false"></div>
             
-            <div class="relative flex flex-col w-4/5 max-w-sm h-full bg-white dark:bg-background-dark shadow-2xl p-6">
+            <div class="relative flex flex-col w-4/5 max-w-sm h-full bg-white dark:bg-background-dark shadow-2xl p-6 text-slate-900 dark:text-white">
                 <div class="flex items-center justify-between mb-8">
                     <div class="flex items-center gap-2">
                         <img src="favicon.svg" alt="Mixology Logo" class="w-8 h-8">
