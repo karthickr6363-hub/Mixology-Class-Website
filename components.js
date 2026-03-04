@@ -28,9 +28,12 @@ function initNav() {
          }" 
          @scroll.window="scrolled = (window.pageYOffset > 20)"
          class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
-         :class="(scrolled || !isTransparentPage) ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-lg h-16 xl:h-20 text-slate-900 dark:text-white' : 'bg-transparent h-20 xl:h-24 text-white'">
+         :class="(scrolled || !isTransparentPage) ? 'shadow-lg h-16 xl:h-20 text-slate-900 dark:text-white' : 'bg-transparent h-20 xl:h-24 text-white'">
         
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        <!-- Background layer to prevent backdrop-blur from creating a containing block bug for fixed overlays -->
+        <div class="absolute inset-0 transition-colors duration-300 -z-10" :class="(scrolled || !isTransparentPage) ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md' : 'bg-transparent'"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
             <!-- Logo (Rule 16) -->
             <a href="index.html" class="flex items-center gap-2 group">
                 <img src="favicon.svg" alt="Mixology Logo" class="w-10 h-10 transition-transform group-hover:scale-110">
@@ -81,49 +84,52 @@ function initNav() {
         </div>
 
         <!-- Mobile Side Menu (Rule 14) -->
-        <div x-show="mobileMenuOpen" 
-             x-transition:enter="transition ease-out duration-300 transform"
-             x-transition:enter-start="-translate-x-full"
-             x-transition:enter-end="translate-x-0"
-             x-transition:leave="transition ease-in duration-300 transform"
-             x-transition:leave-start="translate-x-0"
-             x-transition:leave-end="-translate-x-full"
-             class="fixed inset-0 z-[60] xl:hidden"
-             x-cloak>
-            
-            <div class="fixed inset-0 bg-black/50" @click="mobileMenuOpen = false"></div>
-            
-            <div class="relative flex flex-col w-4/5 max-w-sm h-full bg-white dark:bg-background-dark shadow-2xl p-6 text-slate-900 dark:text-white">
-                <div class="flex items-center justify-between mb-8">
-                    <div class="flex items-center gap-2">
-                        <img src="favicon.svg" alt="Mixology Logo" class="w-8 h-8">
-                        <span class="text-xl font-serif font-bold text-slate-900 dark:text-white">MIXOLOGY</span>
+        <template x-teleport="body">
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-300 transform"
+                 x-transition:enter-start="-translate-x-full"
+                 x-transition:enter-end="translate-x-0"
+                 x-transition:leave="transition ease-in duration-300 transform"
+                 x-transition:leave-start="translate-x-0"
+                 x-transition:leave-end="-translate-x-full"
+                 class="fixed top-0 left-0 w-[100vw] h-[100dvh] z-[100] xl:hidden"
+                 style="height: 100vh; height: 100dvh;"
+                 x-cloak>
+                
+                <div class="absolute inset-0 bg-black/50" @click="mobileMenuOpen = false"></div>
+                
+                <div class="relative flex flex-col w-4/5 max-w-sm h-full bg-white dark:bg-background-dark shadow-2xl p-6 text-slate-900 dark:text-white overflow-hidden border-r border-slate-100 dark:border-slate-800">
+                    <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
+                        <div class="flex items-center gap-2">
+                            <img src="favicon.svg" alt="Mixology Logo" class="w-8 h-8">
+                            <span class="text-xl font-serif font-bold text-slate-900 dark:text-white">MIXOLOGY</span>
+                        </div>
+                        <button @click="mobileMenuOpen = false" class="p-2 text-slate-500 hover:text-primary transition-colors">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
                     </div>
-                    <button @click="mobileMenuOpen = false" class="p-2 text-slate-500">
-                        <i data-lucide="x" class="w-6 h-6"></i>
-                    </button>
-                </div>
 
-                <div class="space-y-2 overflow-y-auto flex-1">
-                    <a href="index.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home</a>
-                    <a href="home2.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Home 2</a>
-                    
-                    <a href="classes.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Classes</a>
+                    <div class="space-y-4 overflow-y-auto flex-1 pr-2">
+                        <a href="index.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">Home</a>
+                        <a href="home2.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">Home 2</a>
+                        
+                        <a href="classes.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">Classes</a>
 
-                    <a href="recipes.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Recipes</a>
-                    <a href="pricing.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Pricing</a>
-                    <a href="how-it-works.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">How It Works</a>
-                    <a href="about.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">About</a>
-                    <a href="contact.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Contact</a>
-                    <a href="dashboard.html" class="nav-link block text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800">Dashboard</a>
-                </div>
+                        <a href="recipes.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">Recipes</a>
+                        <a href="pricing.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">Pricing</a>
+                        <a href="how-it-works.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">How It Works</a>
+                        <a href="about.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">About</a>
+                        <a href="contact.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">Contact</a>
+                        <a href="dashboard.html" class="nav-link block text-lg font-medium transition-colors hover:text-primary">Dashboard</a>
+                    </div>
 
-                <div class="mt-auto space-y-4 pt-6">
-                    <a href="signup.html" class="block w-full text-center py-3 rounded-xl border-2 border-primary text-primary font-bold">Sign Up</a>
-                    <a href="pricing.html" class="block w-full text-center py-3 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/30">BOOK NOW</a>
+                    <div class="mt-auto space-y-4 pt-6 mt-4 border-t border-slate-100 dark:border-slate-800 shrink-0">
+                        <a href="signup.html" class="block w-full text-center py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-colors">Sign Up</a>
+                        <a href="pricing.html" class="block w-full text-center py-3 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:bg-primary-dark transition-colors">BOOK NOW</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </template>
     </nav>
     `;
     const container = document.getElementById('nav-container');
